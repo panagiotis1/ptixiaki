@@ -1,0 +1,116 @@
+<div class="row pt-3">
+    <div class="col-md-8 offset-md-2">
+		<div class="card card-body">
+			<h2 class="text-center">Φόρμα Εγγραφής</h2>
+			<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+				<div class="form-group row pt-3">
+					<div class="col-form-label col-md-3">Όνομα</div>
+					<div class="col-md-9">
+						<input  class="form-control"
+								type="text"
+								name="name"
+								[(ngModel)]="model.name"
+								id="name"
+								placeholder="Όνομα"
+								[class.is-invalid]="name.invalid && name.touched"
+								#name="ngModel"
+								required
+								minlength="3"
+								maxlength="20"
+								pattern="^[a-zA-Zα-ωΑ-Ωάόίώήύέ]+$" 
+								aria-describedby="nameHelp">
+						<small class="form-text text-muted"
+								[class.d-none]="name.valid || name.untouched"
+								id="nameHelp">Απαιτείται όνομα άπο 3 εως 20 χαρακτήρων.</small>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-form-label col-md-3">Επώνυμο</div>
+					<div class="col-md-9">
+						<input  class="form-control"
+								type="text"
+								name="surname"
+								[(ngModel)]="model.surname"
+								id="surname"
+								placeholder="Επώνυμο"
+								[class.is-invalid]="surname.invalid && surname.touched"
+								#surname="ngModel"
+								required
+								minlength="3"
+								maxlength="20"
+								pattern="^[a-zA-Zα-ωΑ-Ωάόίώήύέ]+$" 
+								aria-describedby="surnameHelp">
+						<small class="form-text text-muted"
+			                    [class.d-none]="surname.valid || surname.untouched"
+								id="surnameHelp">Απαιτείται επώνυμο άπο 3 εως 20 χαρακτήρων.</small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-form-label col-md-3">Email</div>
+					<div class="col-md-9">					
+						<input  class="form-control"
+								type="email"
+								name="email"
+								[(ngModel)]="model.email"
+								id="email"
+								placeholder="Εmail"
+								[class.is-invalid]="email.invalid && email.touched"
+								#email="ngModel"
+								required
+								pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+								aria-describedby="emailHelp">
+						<small class="form-text text-muted"
+								[class.d-none]="email.valid || email.untouched"
+								id="emailHelp">Απαιτείται Email της μορφής example@example.xx</small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-form-label col-md-3">Κωδικός</div>
+					<div class="col-md-9">
+						<input  class="form-control"
+								type="password"
+								name="password"
+								[(ngModel)]="model.password"
+								id="password"
+								placeholder="Κωδικός"
+								[class.is-invalid]="password.invalid && password.touched"
+								#password="ngModel"
+								required
+								minlength="4"
+								maxlength="255" 
+								aria-describedby="passwordHelp">
+						<small class="form-text text-muted"
+								[class.d-none]="password.valid || password.untouched"
+								id="passwordHelp">Απαιτείται Κωδικός 4 τουλάχιστον χαρακτήρων.</small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+				<div class="col-form-label col-md-3">Αριθμός Τηλεφώνου</div>
+					<div class="col-md-9">
+						<input  class="form-control"
+								type="number"
+								name="phonenumber"
+								[(ngModel)]="model.phonenumber"
+								id="phonenumber"
+								placeholder="Τηλέφωνο"
+								[class.is-invalid]="phonenumber.invalid && phonenumber.touched"
+								#phonenumber="ngModel"
+								required
+								pattern="^\d{10}$" 
+								aria-describedby="phonenumberHelp">
+						<small class="form-text text-muted"
+								[class.d-none]="phonenumber.valid || phonenumber.untouched"
+								id="phonenumberHelp">Συμπληρώστε 10 ψηφία</small>
+					</div>
+				</div>
+				<button class="btn btn-primary"
+						type="submit"
+						[disabled]="!registerForm.form.valid">Εγγραφή</button>
+			</form>
+		</div>
+		<app-alerts></app-alerts>
+	</div>
+</div>

@@ -1,0 +1,142 @@
+<div class="row pt-3">
+    <div class="col-md-8 offset-md-2">
+		<div class="card card-body">
+			<h2>Δημιουργία άρθρου</h2>
+			<form (ngSubmit)="onSubmit()" #createArticleForm="ngForm">
+				<div class="form-group row">
+					<div class="col-form-label col-md-2">Τίτλος</div>
+					<div class="col-md-10">
+					<input  class="form-control"
+								type="text"
+								name="title"
+								[(ngModel)]="model.title"
+								id="title"
+								placeholder="Τίτλος"
+								[class.is-invalid]="title.invalid && title.touched"
+								#title="ngModel"
+								required
+								minlength="3"
+								maxlength="50" 
+								aria-describedby="titleHelp"
+								required>
+						<small class="form-text text-muted"
+								[class.d-none]="title.valid || title.untouched"
+								id="titleHelp">Απαιτείται Τίτλος 3 έως 50 γραμμάτων.</small>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-form-label col-md-2">
+						<label for="description">Περιγραφή</label>
+					</div>
+					<div class="col-md-10">
+						<textarea
+						class="form-control"
+								type="text"
+								name="description"
+								[(ngModel)]="model.description"
+								id="description"
+								placeholder="Περιγραφή Άρθρου"
+								[class.is-invalid]="description.invalid && description.touched"
+								#description="ngModel"
+								required
+								minlength="2"
+								maxlength="255"
+								aria-describedby="descriptionHelp"
+								rows="3"></textarea>
+						<small class="form-text text-muted"
+								[class.d-none]="description.valid || description.untouched"
+								id="descriptionHelp">Απαιτείται Περιγραφή 2 έως 255 γραμμάτων.</small>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+				<div class="col-form-label col-md-2">Λέξεις Κλειδιά</div>
+					<div class="col-md-10">
+						<input
+						class="form-control"
+								type="text"
+								name="keywords"
+								[(ngModel)]="model.keywords"
+								id="keywords"
+								placeholder="Λέξεις Κλειδιά"
+								[class.is-invalid]="keywords.invalid && keywords.touched"
+								#keywords="ngModel"
+								required
+								minlength="2"
+								maxlength="255"
+								aria-describedby="keywordsHelp"
+								required>
+						<small class="form-text text-muted"
+								[class.d-none]="keywords.valid || keywords.untouched"
+								id="keywordsHelp">Απαιτείται να δώσετε τουλάχιστον μια λέξη κλειδί 2 έως 255 γραμμάτων.</small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-form-label col-md-2">
+						<label for="article">Άρθρο</label>
+					</div>
+					<div class="col-md-10">
+						<textarea
+						class="form-control"
+								type="text"
+								name="article"
+								[(ngModel)]="model.article"
+								id="article"
+								placeholder="Άρθρο"
+								[class.is-invalid]="article.invalid && article.touched"
+								#article="ngModel"
+								required
+								minlength="20"
+								maxlength="16777215"
+								aria-describedby="articleHelp"
+								rows="3"></textarea>
+						<small class="form-text text-muted"
+								[class.d-none]="article.valid || article.untouched"
+								id="articleHelp">Απαιτείται άρθρο.</small>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-form-label col-md-2">
+					  <label for="categories">Κατηγορία</label>
+					</div>
+					<div class="col-md-10">
+					    <select class="form-control custom-select"
+					  			name="category"
+					  			[(ngModel)]="model.category"
+					  			id="createcategories"
+					  			[class.is-invalid]="category.invalid && category.touched"
+					  			#category="ngModel"
+					  			appForbiddenOption="Διάλεξε κατηγορία"
+					  			required
+					  			aria-describedby="categoryHelp">
+						<option>Διάλεξε κατηγορία</option>
+						<option *ngFor = "let category of categories"
+								[value]="category">{{category}}</option>
+									
+					    </select>
+					  		<small class="form-text text-muted"
+								[class.d-none]="category.valid || category.untouched"
+								id="categoryHelp">Απαιτείται επιλογή κατηγορίας.</small>		
+					</div>
+				</div>
+				<!--
+				<div class="form-group row">
+					<div class="col-form-label col-md-2">
+					  <label for="categories">Επιλογή εικόνας</label>
+					</div>
+					<div class="col-md-10">
+						
+						  <input type="file" required [(ngModel)]="model.pic" name="pic" name="pic" accept="image/*">
+						  <button type="button" class="btn btn-primary" onclick="editArticle('create')">UPLOAD</button>
+						
+					</div>
+				</div>-->
+				<button type="submit" class="btn btn-primary" [disabled]="!createArticleForm.form.valid">Δημιουργία</button>
+			</form>
+        </div> <!-- card -->
+    	<app-alerts></app-alerts>
+    </div> <!-- col -->
+</div> <!-- row -->

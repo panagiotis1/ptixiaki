@@ -1,0 +1,27 @@
+<div class="row pt-3">
+    <div class="col-md-8 offset-md-2">
+		<div class="card card-body">
+			<h2>Αναζήτηση χρήστη</h2>
+			<form (ngSubmit)="onSubmit()" #searchUserForm="ngForm">
+				
+				<div class="form-group row">
+					<div class="col-form-label col-md-2">Email χρήστη</div>
+					<div class="col-md-10">
+						<input  class="form-control"
+								type="text"
+								name="email"
+								[(ngModel)]="model.email"
+								id="searchemail"
+								placeholder="email"
+								[class.is-invalid]="email.invalid && email.touched"
+								#email="ngModel">
+					</div>
+				</div>
+
+				
+				<button type="submit" class="btn btn-primary" [disabled]="!searchUserForm.form.valid">Αναζήτηση</button>
+			</form>
+        </div> <!-- card -->
+    </div> <!-- col -->
+</div> <!-- row -->
+<app-table-user></app-table-user>

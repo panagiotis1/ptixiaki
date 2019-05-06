@@ -1,0 +1,51 @@
+<div class="row pt-3">
+  <div class="col-md-8 offset-md-2">
+    <div class="card card-body">
+    <h2 class="text-center">Φόρμα Εισόδου</h2>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="form-group row pt-3">
+          <div class="col-form-label col-md-3">Email</div>
+          <div class="col-md-9">
+            <input  class="form-control"
+                    type="email"
+                    name="email"
+                    [(ngModel)]="model.email"
+                    id="email"
+                    placeholder="Εmail"
+                    [class.is-invalid]="email.invalid && email.touched"
+                    #email="ngModel"
+                    required
+                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                    aria-describedby="emailHelp">
+            <small class="form-text text-muted"
+                     [class.d-none]="email.valid || email.untouched"
+                     id="emailHelp">Απαιτείται Email.</small>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-form-label col-md-3">Κωδικός</div>
+          <div class="col-md-9">
+            <input  class="form-control"
+                    type="password"
+                    name="password"
+                    [(ngModel)]="model.password"
+                    id="password"
+                    placeholder="Κωδικός"
+                    [class.is-invalid]="password.invalid && password.touched"
+                    #password="ngModel"
+                    required
+                    minlength="4"
+                    aria-describedby="passwordHelp">
+            <small class="form-text text-muted"
+                     [class.d-none]="password.valid || password.untouched"
+                     id="passwordHelp">Απαιτείται Κωδικός 4 τουλάχιστον χαρακτήρων.</small>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Είσοδος</button>
+      </form>
+    </div>
+    <app-alerts></app-alerts>
+  </div>
+</div>
+

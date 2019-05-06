@@ -1,0 +1,28 @@
+<ul class="nav nav-tabs justify-content-center">
+	<ng-template [ngIf]="!loggedIn()">
+	  <li class="nav-item">
+	    <a class="nav-link" routerLink="./login" routerLinkActive="active">Είσοδος</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" routerLink="./register" routerLinkActive="active">Εγγραφή</a>
+	  </li>
+	</ng-template>
+	<ng-template [ngIf]="loggedIn()">
+	  <li class="nav-item">
+	    <a class="nav-link" routerLink="./create-article" routerLinkActive="active">Δημιουργία Άρθρου</a>
+	  </li>
+
+	  <li class="nav-item">
+	    <a class="nav-link" routerLink="./search-article" routerLinkActive="active">Αναζήτηση Άρθρου</a>
+	  </li>
+
+	  <li class="nav-item" *ngIf="isAdmin()">
+	    <a class="nav-link" routerLink="./search-user" routerLinkActive="active">Αναζήτηση Χρήστη</a>
+	  </li>
+
+	  <li class="nav-item">
+	    <a class="nav-link" routerLink="" (click)="logout()">Αποσύνδεση</a>
+	  </li>
+	</ng-template>
+</ul>
+<router-outlet></router-outlet>
