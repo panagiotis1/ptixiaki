@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+const localhost = "http://localhost:3000/api/";
+const server = "https://peaceful-island-82167.herokuapp.com/api/"
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private _authCheckUrl = "http://localhost:3000/api/auth-check";
-  private _adminCheckUrl = "http://localhost:3000/api/admin-check";
-  private _createArticleUrl = "http://localhost:3000/api/create-article";
-  private _searchArticleUrl = "http://localhost:3000/api/search-article";
-  private _editArticleUrl = "http://localhost:3000/api/edit-article";
-  private _deleteArticleUrl = "http://localhost:3000/api/delete-article";
-  private _searchUserUrl = "http://localhost:3000/api/search-user";
-  private _editUserUrl = "http://localhost:3000/api/edit-user";
-  private _deleteUserUrl = "http://localhost:3000/api/delete-user";
+  private _authCheckUrl = server + "auth-check";
+  private _adminCheckUrl = server + "admin-check";
+  private _createArticleUrl = server + "create-article";
+  private _searchArticleUrl = server + "search-article";
+  private _editArticleUrl = server + "edit-article";
+  private _deleteArticleUrl = server + "delete-article";
+  private _searchUserUrl = server + "search-user";
+  private _editUserUrl = server + "edit-user";
+  private _deleteUserUrl = server + "delete-user";
 
   constructor(private http: HttpClient,
               private _router: Router) { }

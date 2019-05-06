@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+const localhost = "http://localhost:3000/api/";
+const server = "https://peaceful-island-82167.herokuapp.com/api/"
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventsService {
-  private _basketUrl = "http://localhost:3000/api/basket";
-  private _podosfairoUrl = "http://localhost:3000/api/podosfairo";
-  private _homePageUrl = "http://localhost:3000/api/home-page";
-  private _loginUrl = "http://localhost:3000/api/login";
-  private _registerUrl = "http://localhost:3000/api/register";
-  private _getCategoriesUrl = "http://localhost:3000/api/get-categories";
+  private _basketUrl = server + "basket";
+  private _podosfairoUrl = server + "podosfairo";
+  private _homePageUrl = server + "home-page";
+  private _loginUrl = server + "login";
+  private _registerUrl = server + "register";
+  private _getCategoriesUrl = server + "get-categories";
 
   constructor(private http: HttpClient) {}
   homePage(){
